@@ -1,16 +1,12 @@
-<!-- Loop over each object in the projects array -->
-  {{#each blogs as |blog| }}
-<a href="/blogs/{{blog.id}}">
-  <div class="row">
-  <div class=" col card text-center">
-    <div class="card-body">
-      <h5 class="card-title">{{blog.title}}</h5>
-      <p class="card-text">{{blog.body}}</p>
-    </div>
-    <div class="card-footer text-muted">
-      Created on {{format_date blog.date_created}}
+{{#each blogs as |blog| }}
+<a href="/{{blog.id}}">
+  <div class="row form-horizontal">
+    <div class=" col card text-center">
+      <div class="card-body">
+        <h5 class="card-title">{{blog.title}}</h5>
+        <p class="card-text">Created on {{format_date blog.date_created}}</p>
+      </div>
     </div>
   </div>
-</div>
 </a>
-  {{/each}}
+{{/each}}

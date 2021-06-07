@@ -1,6 +1,12 @@
-<div class="container text-center">
-    <h1>{{post.title}}</h1>
-    <p>{{post.body}}</p>
-    <p>Created by {{post.user.username}} on {{format_date post.date_created}}</p>
-    <textarea></textarea>
+<div class="container form-horizontal">
+    <h1 class="text-center">{{post.title}}</h1>
+    <h5 class="text-center">{{post.body}}</h5>
+    <p class="text-center">Created by {{post.user.username}} on {{format_date post.date_created}}</p>
+    <div>
+        {{#each post.comments as |comment| }}
+            <span>{{comment.body}}</span>
+            <p class="author-name"> - {{comment.user.username}} on {{format_date comment.date_created}}</p>
+        {{/each}}
+    </div>
+    <textarea id="comment-box" data-blog-id="{{post.id}}" placeholder="Press enter when you are finished..." style="resize:none;width:100%;"></textarea>
 </div>
