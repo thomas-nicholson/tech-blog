@@ -21,7 +21,7 @@
                         <a class="nav-link" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Dashboard</a>
+                        <a class="nav-link" href="/dashboard">Dashboard</a>
                     </li>
                     <li class="nav-item">
                         {{#if logged_in}}
@@ -32,7 +32,7 @@
                     </li>
                     {{#if is_dashboard}}
                         <li class="nav-item">
-                            <button class="btn btn-outline-success" type="submit">Search</button>
+                            <a href="/newpost"><button class="btn btn-outline-success" type="button">New Post</button></a>
                         </li>
                     {{/if}}
                 </ul>

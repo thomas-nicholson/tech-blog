@@ -41,10 +41,42 @@ const signupFormHandler = async (event) => {
     }
 };
   
-document
+
+const newBlogHandler = async (event) => {
+  event.preventDefault();
+
+  const title = document.querySelector('#blog-title').value.trim();
+  const body = document.querySelector('#blog-body').value.trim();
+
+  if (title && body) {
+      const response = await fetch('/api/newpost', {
+          method: 'POST',
+          body: JSON.stringify({ title, body }),
+          headers: { 'Content-Type': 'application/json' },
+      });
+
+      if (response.ok) {
+          document.location.replace('/');
+      } else {
+          alert(response.statusText);
+      }
+  }
+};
+
+if (document.querySelector('#login-button')) {
+  document
     .querySelector('#login-button')
     .addEventListener('click', loginFormHandler);
+}
 
-document
+if (document.querySelector('#signup-button')) {
+  document
     .querySelector('#signup-button')
     .addEventListener('click', signupFormHandler);
+}
+
+if (document.querySelector('#new-blog-button')) {
+  document
+    .querySelector('#new-blog-button')
+    .addEventListener('click', newBlogHandler);
+}
