@@ -1,0 +1,21 @@
+<div class="container form-horizontal">
+    <form class="">
+    <div class="mb-3">
+        <label for="blog-title" class="form-label">Title</label>
+        <input type="text" class="form-control" id="blog-title" value="{{post.title}}" placeholder="title">
+    </div>
+    <div class="mb-3">
+        <label for="blog-body" class="form-label">Body</label>
+        <textarea class="form-control" id="blog-body" rows="3">{{post.body}}</textarea>
+    </div>    
+    <button type="button" data-blog-id="{{post.id}}" id="update-blog-button" class="btn btn-dark">Update</button> 
+    <button type="button" data-blog-id="{{post.id}}" id="delete-button" class="btn btn-danger">Delete</button>
+    </form>
+    <br />
+    <div>
+        {{#each post.comments as |comment| }}
+            <span>{{comment.body}}</span>
+            <p class="author-name"> - {{comment.user.username}} on {{format_date comment.date_created}}</p>
+        {{/each}}
+    </div>
+</div>
