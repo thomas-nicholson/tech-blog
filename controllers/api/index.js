@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Blog } = require('../../models');
+const { User, Blog, Comment } = require('../../models');
 
 router.post('/login', async (req, res) => {
     try {
@@ -64,6 +64,49 @@ router.post('/newpost', async (req, res) => {
   } catch (err) {
     console.log(err)
     res.status(400).json(err);
+  }
+});
+
+router.post('/newcomment', async (req, res) => {
+
+  let newComment = req.body;
+  newComment.user_id = req.session.user_id;
+  console.log(newComment);
+  try {
+    const commentData = await Comment.create(newComment);
+    res.status(200).json(commentData);
+  } catch (err) {
+    console.log(err)
+    res.status(400).json(err);
+  }
+});
+
+router.put('/updatepost', async (req, res) => {
+  console.log(req.body);
+  try {
+    const blogData = await Blog.update(req.body, {where: {id: req.body.id}});
+    res.status(200).json(blogData);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+router.delete('/deletepost', async (req, res) => {
+  try {
+    const commentData = await Comment.destroy({
+      where: {
+        blog_id: req.body.id,
+      }
+    });
+    const blogData = await Blog.destroy({
+      where: {
+        id: req.body.id,
+      }
+    })
+    res.status(200).json(blogData);
+  } catch (err) {
+    res.status(400).json(err);
+
   }
 })
 
