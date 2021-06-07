@@ -56,11 +56,27 @@ const newBlogHandler = async (event) => {
       });
 
       if (response.ok) {
-          document.location.replace('/');
+          document.location.replace('/dashboard');
       } else {
           alert(response.statusText);
       }
   }
+};
+
+const logOutHandler = async (event) => {
+  event.preventDefault();
+  const response = await fetch('/api/logout', {
+      method: 'POST',
+      //body: JSON.stringify({ title, body }),
+      headers: { 'Content-Type': 'application/json' },
+  });
+
+  if (response.ok) {
+      document.location.replace('/login');
+  } else {
+      alert(response.statusText);
+  }
+
 };
 
 if (document.querySelector('#login-button')) {
@@ -79,4 +95,10 @@ if (document.querySelector('#new-blog-button')) {
   document
     .querySelector('#new-blog-button')
     .addEventListener('click', newBlogHandler);
+}
+
+if (document.querySelector('#logout')) {
+  document
+    .querySelector('#logout')
+    .addEventListener('click', logOutHandler);
 }
