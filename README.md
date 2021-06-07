@@ -6,6 +6,8 @@ Do you ever find yourself wanting to write all your thoughts down and share them
 
 ## Screenshot
 
+![](assets/screenshot.png)
+
 ## Link
 
-[This is the link to the deployed application]()
+[This is the link to the deployed application](https://stark-earth-70540.herokuapp.com/)
