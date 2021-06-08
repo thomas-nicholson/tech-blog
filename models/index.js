@@ -17,7 +17,7 @@ User.hasMany(Comment, {
 })
 
 Comment.belongsTo(User, {
-  foreignKey: 'blog_id'
+  foreignKey: 'user_id'
 })
 
 Blog.hasMany(Comment, {

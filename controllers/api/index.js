@@ -57,12 +57,10 @@ router.post('/newpost', async (req, res) => {
 
   let newPost = req.body;
   newPost.user_id = req.session.user_id;
-  console.log(newPost);
   try {
     const blogData = await Blog.create(newPost);
     res.status(200).json(blogData);
   } catch (err) {
-    console.log(err)
     res.status(400).json(err);
   }
 });
@@ -71,18 +69,15 @@ router.post('/newcomment', async (req, res) => {
 
   let newComment = req.body;
   newComment.user_id = req.session.user_id;
-  console.log(newComment);
   try {
     const commentData = await Comment.create(newComment);
     res.status(200).json(commentData);
   } catch (err) {
-    console.log(err)
     res.status(400).json(err);
   }
 });
 
 router.put('/updatepost', async (req, res) => {
-  console.log(req.body);
   try {
     const blogData = await Blog.update(req.body, {where: {id: req.body.id}});
     res.status(200).json(blogData);

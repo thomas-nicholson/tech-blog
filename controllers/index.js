@@ -73,9 +73,8 @@ router.get('/:id', async (req, res) => {
             }]
         }],
     });
-    console.log(postData);
     const post = postData.get({ plain: true });
-    console.log(post);
+    console.log(post.comments);
     if (post.user_id === req.session.user_id) {
         console.log("This is my post!!");
         res.render('myblog', {
